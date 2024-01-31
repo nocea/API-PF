@@ -1,0 +1,29 @@
+C:\Users\Puesto10\Desktop\GITHUB\VisualStudio(.NET)\API-PF\BIBLIOTECA\bin\Debug\net6.0\BIBLIOTECA.deps.json
+C:\Users\Puesto10\Desktop\GITHUB\VisualStudio(.NET)\API-PF\BIBLIOTECA\bin\Debug\net6.0\BIBLIOTECA.runtimeconfig.json
+C:\Users\Puesto10\Desktop\GITHUB\VisualStudio(.NET)\API-PF\BIBLIOTECA\bin\Debug\net6.0\BIBLIOTECA.dll
+C:\Users\Puesto10\Desktop\GITHUB\VisualStudio(.NET)\API-PF\BIBLIOTECA\bin\Debug\net6.0\BIBLIOTECA.pdb
+C:\Users\Puesto10\Desktop\GITHUB\VisualStudio(.NET)\API-PF\BIBLIOTECA\obj\Debug\net6.0\BIBLIOTECA.csproj.AssemblyReference.cache
+C:\Users\Puesto10\Desktop\GITHUB\VisualStudio(.NET)\API-PF\BIBLIOTECA\obj\Debug\net6.0\BIBLIOTECA.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Puesto10\Desktop\GITHUB\VisualStudio(.NET)\API-PF\BIBLIOTECA\obj\Debug\net6.0\BIBLIOTECA.AssemblyInfoInputs.cache
+C:\Users\Puesto10\Desktop\GITHUB\VisualStudio(.NET)\API-PF\BIBLIOTECA\obj\Debug\net6.0\BIBLIOTECA.AssemblyInfo.cs
+C:\Users\Puesto10\Desktop\GITHUB\VisualStudio(.NET)\API-PF\BIBLIOTECA\obj\Debug\net6.0\BIBLIOTECA.csproj.CoreCompileInputs.cache
+C:\Users\Puesto10\Desktop\GITHUB\VisualStudio(.NET)\API-PF\BIBLIOTECA\obj\Debug\net6.0\BIBLIOTECA.dll
+C:\Users\Puesto10\Desktop\GITHUB\VisualStudio(.NET)\API-PF\BIBLIOTECA\obj\Debug\net6.0\refint\BIBLIOTECA.dll
+C:\Users\Puesto10\Desktop\GITHUB\VisualStudio(.NET)\API-PF\BIBLIOTECA\obj\Debug\net6.0\BIBLIOTECA.pdb
+C:\Users\Puesto10\Desktop\GITHUB\VisualStudio(.NET)\API-PF\BIBLIOTECA\obj\Debug\net6.0\BIBLIOTECA.genruntimeconfig.cache
+C:\Users\Puesto10\Desktop\GITHUB\VisualStudio(.NET)\API-PF\BIBLIOTECA\obj\Debug\net6.0\ref\BIBLIOTECA.dll
+D:\PROYECTOS FINALES GRADO\.NET\API-PF\BIBLIOTECA\bin\Debug\net6.0\BIBLIOTECA.deps.json
+D:\PROYECTOS FINALES GRADO\.NET\API-PF\BIBLIOTECA\bin\Debug\net6.0\BIBLIOTECA.runtimeconfig.json
+D:\PROYECTOS FINALES GRADO\.NET\API-PF\BIBLIOTECA\bin\Debug\net6.0\BIBLIOTECA.dll
+D:\PROYECTOS FINALES GRADO\.NET\API-PF\BIBLIOTECA\bin\Debug\net6.0\BIBLIOTECA.pdb
+D:\PROYECTOS FINALES GRADO\.NET\API-PF\BIBLIOTECA\obj\Debug\net6.0\BIBLIOTECA.csproj.AssemblyReference.cache
+D:\PROYECTOS FINALES GRADO\.NET\API-PF\BIBLIOTECA\obj\Debug\net6.0\BIBLIOTECA.GeneratedMSBuildEditorConfig.editorconfig
+D:\PROYECTOS FINALES GRADO\.NET\API-PF\BIBLIOTECA\obj\Debug\net6.0\BIBLIOTECA.AssemblyInfoInputs.cache
+D:\PROYECTOS FINALES GRADO\.NET\API-PF\BIBLIOTECA\obj\Debug\net6.0\BIBLIOTECA.AssemblyInfo.cs
+D:\PROYECTOS FINALES GRADO\.NET\API-PF\BIBLIOTECA\obj\Debug\net6.0\BIBLIOTECA.csproj.CoreCompileInputs.cache
+D:\PROYECTOS FINALES GRADO\.NET\API-PF\BIBLIOTECA\obj\Debug\net6.0\BIBLIOTECA.sourcelink.json
+D:\PROYECTOS FINALES GRADO\.NET\API-PF\BIBLIOTECA\obj\Debug\net6.0\BIBLIOTECA.dll
+D:\PROYECTOS FINALES GRADO\.NET\API-PF\BIBLIOTECA\obj\Debug\net6.0\refint\BIBLIOTECA.dll
+D:\PROYECTOS FINALES GRADO\.NET\API-PF\BIBLIOTECA\obj\Debug\net6.0\BIBLIOTECA.pdb
+D:\PROYECTOS FINALES GRADO\.NET\API-PF\BIBLIOTECA\obj\Debug\net6.0\BIBLIOTECA.genruntimeconfig.cache
+D:\PROYECTOS FINALES GRADO\.NET\API-PF\BIBLIOTECA\obj\Debug\net6.0\ref\BIBLIOTECA.dll
