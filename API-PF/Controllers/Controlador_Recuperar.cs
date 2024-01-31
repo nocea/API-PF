@@ -45,6 +45,11 @@ namespace API_PF.Controllers
                 return StatusCode(500, new { Mensaje = "Error al recuperar contraseña.", Error = ex.Message });
             }
         }
+        //[HttpPost("cambiarContrasena")]
+        //public IActionResult CambiarContrasena([FromBody] Usuario usaurioCambiar)
+        //{
+            
+        //}
         private string GenerarNuevoToken()
         {
             Guid guid = Guid.NewGuid();
@@ -60,7 +65,9 @@ namespace API_PF.Controllers
                 .AddJsonFile("appsettings.json")
                 .Build();
                 var correoConfiguracion = config.GetSection("CorreoConfiguracion");
-                // Configuración del cliente SMTP para Gmail
+                string urlRecuperacion = "https://localhost:7237/Home/CambiarContrasena?email=" + destinatario+"?token="+token;
+
+                
                 var smtpClient = new SmtpClient(correoConfiguracion["ServidorSmtp"])
                 {
                     Port = int.Parse(correoConfiguracion["Puerto"]),
@@ -73,8 +80,8 @@ namespace API_PF.Controllers
                 {
                     From = new MailAddress(correoConfiguracion["Usuario"]),
                     Subject = "Recuperación de Contraseña",
-                    Body = $"Utiliza el siguiente token para recuperar tu contraseña: {token}",
-                    IsBodyHtml = false,
+                    Body = $"Haz clic en el siguiente enlace para recuperar tu contraseña: <a href='{urlRecuperacion}'>{urlRecuperacion}</a>",
+                    IsBodyHtml = true,
                 };
 
                 // Añadir destinatario
