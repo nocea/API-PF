@@ -16,7 +16,7 @@ namespace API_PF.Controllers
             this.contexto = contexto;
         }
 
-        [HttpPost]
+        [HttpPost("RecuperarContrasena")]
         public IActionResult RecuperarContrasena([FromBody] Usuario usuarioRecuperar)
         {
             try
@@ -45,11 +45,12 @@ namespace API_PF.Controllers
                 return StatusCode(500, new { Mensaje = "Error al recuperar contraseña.", Error = ex.Message });
             }
         }
-        //[HttpPost("cambiarContrasena")]
-        //public IActionResult CambiarContrasena([FromBody] Usuario usaurioCambiar)
-        //{
-            
-        //}
+        [HttpPost("CambiarContrasena")]
+        public IActionResult CambiarContrasena([FromBody] Usuario usuarioCambiarContrasena)
+        {
+ 
+            return Ok(new { mensaje = "token ok-email ok-contraseña nueva ok" });
+        }
         private string GenerarNuevoToken()
         {
             Guid guid = Guid.NewGuid();
@@ -65,13 +66,13 @@ namespace API_PF.Controllers
                 .AddJsonFile("appsettings.json")
                 .Build();
                 var correoConfiguracion = config.GetSection("CorreoConfiguracion");
-                string urlRecuperacion = "https://localhost:7237/Home/CambiarContrasena?email=" + destinatario+"?token="+token;
+                string urlRecuperacion = "https://localhost:7237/Home/CambiarContrasena?email="+destinatario+"&token="+token;
 
                 
                 var smtpClient = new SmtpClient(correoConfiguracion["ServidorSmtp"])
                 {
                     Port = int.Parse(correoConfiguracion["Puerto"]),
-                    Credentials = new NetworkCredential(correoConfiguracion["Usuario"], correoConfiguracion["Contraseña"]),
+                    Credentials = new NetworkCredential(correoConfiguracion["Usuario"], correoConfiguracion["Contrasena"]),
                     EnableSsl = true,
                 };
 

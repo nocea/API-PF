@@ -18,5 +18,6 @@ namespace BIBLIOTECA
         public string? alias_usuario { get; set; }
         public string? email_usuario { get; set; }
         public string? passwd_usuario { get; set; }
+        public string? token_usuario { get; set; }
     }
 }

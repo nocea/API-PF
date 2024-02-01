@@ -1,5 +1,4 @@
 C:\Users\Puesto10\Desktop\GITHUB\VisualStudio(.NET)\API-PF\API-PF\bin\Debug\net6.0\appsettings.Development.json
-C:\Users\Puesto10\Desktop\GITHUB\VisualStudio(.NET)\API-PF\API-PF\bin\Debug\net6.0\appsettings.json
 C:\Users\Puesto10\Desktop\GITHUB\VisualStudio(.NET)\API-PF\API-PF\bin\Debug\net6.0\API-PF.exe
 C:\Users\Puesto10\Desktop\GITHUB\VisualStudio(.NET)\API-PF\API-PF\bin\Debug\net6.0\API-PF.deps.json
 C:\Users\Puesto10\Desktop\GITHUB\VisualStudio(.NET)\API-PF\API-PF\bin\Debug\net6.0\API-PF.runtimeconfig.json
@@ -585,3 +584,4 @@ C:\Users\Puesto10\Desktop\GITHUB\VisualStudio(.NET)\API-PF\API-PF\bin\Debug\net6
 C:\Users\Puesto10\Desktop\GITHUB\VisualStudio(.NET)\API-PF\API-PF\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\Puesto10\Desktop\GITHUB\VisualStudio(.NET)\API-PF\API-PF\bin\Debug\net6.0\BCrypt.Net-Next.dll
 D:\PROYECTOS FINALES GRADO\.NET\API-PF\API-PF\bin\Debug\net6.0\BCrypt.Net-Next.dll
+C:\Users\Puesto10\Desktop\GITHUB\VisualStudio(.NET)\API-PF\API-PF\bin\Debug\net6.0\appsettings.json

@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BIBLIOTECA.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20240131122314_primera")]
+    [Migration("20240201095340_primera")]
     partial class primera
     {
         /// <inheritdoc />
