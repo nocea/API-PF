@@ -37,7 +37,8 @@ namespace BIBLIOTECA.Migrations
                     movil_usuario = table.Column<int>(type: "integer", nullable: true),
                     alias_usuario = table.Column<string>(type: "text", nullable: true),
                     email_usuario = table.Column<string>(type: "text", nullable: true),
-                    passwd_usuario = table.Column<string>(type: "text", nullable: true)
+                    passwd_usuario = table.Column<string>(type: "text", nullable: true),
+                    token_usuario = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {

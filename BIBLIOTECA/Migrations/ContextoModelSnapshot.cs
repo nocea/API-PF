@@ -67,6 +67,9 @@ namespace BIBLIOTECA.Migrations
                     b.Property<string>("rol_usuario")
                         .HasColumnType("text");
 
+                    b.Property<string>("token_usuario")
+                        .HasColumnType("text");
+
                     b.HasKey("id_usuario");
 
                     b.ToTable("usuarios");

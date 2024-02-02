@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Scripting;
 using Microsoft.EntityFrameworkCore;
+using System.Text;
+using System.Security.Cryptography;
 
 namespace API_PF.Controllers
 {   
@@ -38,7 +40,12 @@ namespace API_PF.Controllers
             {
                 // Comprueba si el email ya existe
                 var usuarioExistenteEmail = contexto.usuarios.FirstOrDefault(u => u.email_usuario == nuevoUsuario.email_usuario);
-                
+                var config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+                var salt = config.GetSection("Salt");
+                string stringSalt = salt["string"];
                 if (usuarioExistenteEmail != null)
                 {
                     // Devuelve un conflicto con el mensaje
@@ -53,7 +60,7 @@ namespace API_PF.Controllers
                     // Usuario con el mismo alias ya registrado
                     return Conflict(new { Mensaje = "El alias de usuario ya existe." });
                 }
-                string contraseñaEncriptada = BCrypt.Net.BCrypt.HashPassword(nuevoUsuario.passwd_usuario);
+                string contraseñaEncriptada = HashPassword(nuevoUsuario.passwd_usuario, stringSalt);
                 nuevoUsuario.passwd_usuario = contraseñaEncriptada;
                 Console.WriteLine(nuevoUsuario.movil_usuario);
                 // Agrega el nuevo usuario al contexto
@@ -69,6 +76,20 @@ namespace API_PF.Controllers
             {
                 // Maneja cualquier error
                 return StatusCode(500, new { Mensaje = "Error al registrar el usuario.", Error = ex.Message });
+            }
+            static string HashPassword(string password, string salt)
+            {
+                using (SHA256 sha256 = SHA256.Create())
+                {
+                    // Concatenar la contraseña y la sal antes de hashear
+                    string saltedPassword = password + salt;
+
+                    // Convertir la cadena a bytes y calcular el hash
+                    byte[] hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(saltedPassword));
+
+                    // Convertir los bytes a una cadena hexadecimal
+                    return BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+                }
             }
         }
         

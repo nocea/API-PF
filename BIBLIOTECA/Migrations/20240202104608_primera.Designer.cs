@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BIBLIOTECA.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20240201095340_primera")]
+    [Migration("20240202104608_primera")]
     partial class primera
     {
         /// <inheritdoc />
@@ -68,6 +68,9 @@ namespace BIBLIOTECA.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("rol_usuario")
+                        .HasColumnType("text");
+
+                    b.Property<string>("token_usuario")
                         .HasColumnType("text");
 
                     b.HasKey("id_usuario");

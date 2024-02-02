@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Net.Mail;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace API_PF.Controllers
 {
@@ -32,7 +34,7 @@ namespace API_PF.Controllers
                     };
                     contexto.tokens.Add(nuevoToken);
                     contexto.SaveChanges();
-                    EnviarCorreoRecuperacion(usuarioRecuperar.email_usuario, nuevoToken.cadena_token);
+                    EnviarCorreoRecuperacion(usuarioExistente.email_usuario, nuevoToken.cadena_token);
                     return Ok(new { mensaje = "Token-Hecho" });
                 }
                 else
@@ -46,10 +48,55 @@ namespace API_PF.Controllers
             }
         }
         [HttpPost("CambiarContrasena")]
-        public IActionResult CambiarContrasena([FromBody] Usuario usuarioCambiarContrasena)
+        public IActionResult CambiarContrasena([FromBody] Usuario usuarioEmailToken)
         {
- 
-            return Ok(new { mensaje = "token ok-email ok-contraseña nueva ok" });
+            try
+            {
+                var usuarioExistente = contexto.usuarios.FirstOrDefault(u => u.email_usuario == usuarioEmailToken.email_usuario);
+                var tokenValido = contexto.tokens.FirstOrDefault(t => t.cadena_token == usuarioEmailToken.token_usuario);
+                var config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+                var salt = config.GetSection("Salt");
+                string stringSalt = salt["string"];
+                if (usuarioExistente != null && tokenValido != null)
+                {
+                    if (tokenValido.fechaFin_token < DateTime.Now)
+                    {
+                        return Conflict(new { mensaje = "Tiempo de uso token pasado" });
+                    }
+                    else
+                    {
+                        string contraseñaEncriptada = HashPassword(usuarioEmailToken.passwd_usuario, stringSalt);
+                        usuarioExistente.passwd_usuario = contraseñaEncriptada;
+                        contexto.SaveChanges();
+                        return Ok(new { mensaje = "token ok-email ok-contraseña nueva ok" });
+                    }
+                }
+                else
+                {
+                    return Conflict(new { mensaje = "Email o token no valido" });
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Mensaje = "Error al cambiar contraseña", Error = ex.Message });
+            }
+            static string HashPassword(string password, string salt)
+            {
+                using (SHA256 sha256 = SHA256.Create())
+                {
+                    // Concatenar la contraseña y la sal antes de hashear
+                    string saltedPassword = password + salt;
+
+                    // Convertir la cadena a bytes y calcular el hash
+                    byte[] hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(saltedPassword));
+
+                    // Convertir los bytes a una cadena hexadecimal
+                    return BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+                }
+            }
         }
         private string GenerarNuevoToken()
         {
