@@ -23,6 +23,7 @@ namespace API_PF.Controllers
         {
             try
             {
+                
                 var usuarioExistente = contexto.usuarios.FirstOrDefault(u => u.email_usuario == usuarioRecuperar.email_usuario);
                 if (usuarioExistente != null)
                 {
