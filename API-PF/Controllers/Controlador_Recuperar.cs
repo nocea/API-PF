@@ -114,7 +114,7 @@ namespace API_PF.Controllers
                 .AddJsonFile("appsettings.json")
                 .Build();
                 var correoConfiguracion = config.GetSection("CorreoConfiguracion");
-                string urlRecuperacion = "https://localhost:7237/Home/CambiarContrasena?email="+destinatario+"&token="+token;
+                string urlRecuperacion = "https://localhost:7237/Controlador_Recuperar/CambiarContrasena?email="+destinatario+"&token="+token;
 
                 
                 var smtpClient = new SmtpClient(correoConfiguracion["ServidorSmtp"])

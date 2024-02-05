@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Puesto10\\Desktop\\GITHUB\\VisualStudio(.NET)\\API-PF\\API-PF\\API-PF.csproj": {}
+    "D:\\PROYECTOS FINALES GRADO\\.NET\\API-PF\\API-PF\\API-PF.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Puesto10\\Desktop\\GITHUB\\VisualStudio(.NET)\\API-PF\\API-PF\\API-PF.csproj": {
+    "D:\\PROYECTOS FINALES GRADO\\.NET\\API-PF\\API-PF\\API-PF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Puesto10\\Desktop\\GITHUB\\VisualStudio(.NET)\\API-PF\\API-PF\\API-PF.csproj",
+        "projectUniqueName": "D:\\PROYECTOS FINALES GRADO\\.NET\\API-PF\\API-PF\\API-PF.csproj",
         "projectName": "API-PF",
-        "projectPath": "C:\\Users\\Puesto10\\Desktop\\GITHUB\\VisualStudio(.NET)\\API-PF\\API-PF\\API-PF.csproj",
-        "packagesPath": "C:\\Users\\Puesto10\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Puesto10\\Desktop\\GITHUB\\VisualStudio(.NET)\\API-PF\\API-PF\\obj\\",
+        "projectPath": "D:\\PROYECTOS FINALES GRADO\\.NET\\API-PF\\API-PF\\API-PF.csproj",
+        "packagesPath": "C:\\Users\\mnoce\\.nuget\\packages\\",
+        "outputPath": "D:\\PROYECTOS FINALES GRADO\\.NET\\API-PF\\API-PF\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Puesto10\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mnoce\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Puesto10\\Desktop\\GITHUB\\VisualStudio(.NET)\\API-PF\\BIBLIOTECA\\BIBLIOTECA.csproj": {
-                "projectPath": "C:\\Users\\Puesto10\\Desktop\\GITHUB\\VisualStudio(.NET)\\API-PF\\BIBLIOTECA\\BIBLIOTECA.csproj"
+              "D:\\PROYECTOS FINALES GRADO\\.NET\\API-PF\\BIBLIOTECA\\BIBLIOTECA.csproj": {
+                "projectPath": "D:\\PROYECTOS FINALES GRADO\\.NET\\API-PF\\BIBLIOTECA\\BIBLIOTECA.csproj"
               }
             }
           }
@@ -96,21 +96,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Puesto10\\Desktop\\GITHUB\\VisualStudio(.NET)\\API-PF\\BIBLIOTECA\\BIBLIOTECA.csproj": {
+    "D:\\PROYECTOS FINALES GRADO\\.NET\\API-PF\\BIBLIOTECA\\BIBLIOTECA.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Puesto10\\Desktop\\GITHUB\\VisualStudio(.NET)\\API-PF\\BIBLIOTECA\\BIBLIOTECA.csproj",
+        "projectUniqueName": "D:\\PROYECTOS FINALES GRADO\\.NET\\API-PF\\BIBLIOTECA\\BIBLIOTECA.csproj",
         "projectName": "BIBLIOTECA",
-        "projectPath": "C:\\Users\\Puesto10\\Desktop\\GITHUB\\VisualStudio(.NET)\\API-PF\\BIBLIOTECA\\BIBLIOTECA.csproj",
-        "packagesPath": "C:\\Users\\Puesto10\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Puesto10\\Desktop\\GITHUB\\VisualStudio(.NET)\\API-PF\\BIBLIOTECA\\obj\\",
+        "projectPath": "D:\\PROYECTOS FINALES GRADO\\.NET\\API-PF\\BIBLIOTECA\\BIBLIOTECA.csproj",
+        "packagesPath": "C:\\Users\\mnoce\\.nuget\\packages\\",
+        "outputPath": "D:\\PROYECTOS FINALES GRADO\\.NET\\API-PF\\BIBLIOTECA\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Puesto10\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mnoce\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -163,7 +163,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

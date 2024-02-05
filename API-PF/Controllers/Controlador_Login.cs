@@ -28,14 +28,13 @@ namespace API_PF.Controllers
                 var salt = config.GetSection("Salt");
                 string stringSalt = salt["string"];
                 usuarioLogin.passwd_usuario= Utils.Utils.HashPassword(usuarioLogin.passwd_usuario, stringSalt);
-                Console.WriteLine(usuarioLogin.passwd_usuario);
-                Console.WriteLine(usuarioExistente.passwd_usuario);
                 if (usuarioExistente!=null)
                 {
                     if (usuarioLogin.passwd_usuario== usuarioExistente.passwd_usuario)
-                    {
+                    {   
+
                         // Contraseña correcta, procede con el inicio de sesión
-                        return Ok(new { mensaje = "Inicio de sesión exitoso" });
+                        return Ok(new {usuario = usuarioExistente });
                     }
                     else
                     {
