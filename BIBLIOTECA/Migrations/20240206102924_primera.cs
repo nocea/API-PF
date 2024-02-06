@@ -44,6 +44,11 @@ namespace BIBLIOTECA.Migrations
                 {
                     table.PrimaryKey("PK_usuarios", x => x.id_usuario);
                 });
+
+            migrationBuilder.InsertData(
+                table: "usuarios",
+                columns: new[] { "id_usuario", "alias_usuario", "email_usuario", "movil_usuario", "nombreCompleto_usuario", "passwd_usuario", "rol_usuario", "token_usuario" },
+                values: new object[] { 1, null, "admin@admin", null, "Administrador", "eb31b34db2f22a0030aa4f9306b77bfbbda728967e9feb88ea79ac206e657d29", "ADMIN", null });
         }
 
         /// <inheritdoc />

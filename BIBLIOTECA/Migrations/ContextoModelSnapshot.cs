@@ -73,6 +73,16 @@ namespace BIBLIOTECA.Migrations
                     b.HasKey("id_usuario");
 
                     b.ToTable("usuarios");
+
+                    b.HasData(
+                        new
+                        {
+                            id_usuario = 1,
+                            email_usuario = "admin@admin",
+                            nombreCompleto_usuario = "Administrador",
+                            passwd_usuario = "eb31b34db2f22a0030aa4f9306b77bfbbda728967e9feb88ea79ac206e657d29",
+                            rol_usuario = "ADMIN"
+                        });
                 });
 #pragma warning restore 612, 618
         }
