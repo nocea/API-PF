@@ -63,10 +63,8 @@ namespace API_PF.Controllers
                 }
                 string contraseñaEncriptada = Utils.Utils.HashPassword(nuevoUsuario.passwd_usuario, stringSalt);
                 nuevoUsuario.passwd_usuario = contraseñaEncriptada;
-                Console.WriteLine(nuevoUsuario.movil_usuario);
                 // Agrega el nuevo usuario al contexto
                 contexto.usuarios.Add(nuevoUsuario);
-
                 // Guarda los cambios en la base de datos
                 contexto.SaveChanges();
 
