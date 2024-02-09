@@ -48,13 +48,13 @@ namespace API_PF.Controllers
                 return StatusCode(500, new { Mensaje = "Error al recuperar contraseña.", Error = ex.Message });
             }
         }
-        [HttpPost("CambiarContrasena")]
-        public IActionResult CambiarContrasena([FromBody] Usuario usuarioEmailToken)
+        [HttpPost("CambiarContrasena/{token}")]
+        public IActionResult CambiarContrasena([FromBody] Usuario usuarioEmailToken,string token)
         {
             try
             {
                 var usuarioExistente = contexto.usuarios.FirstOrDefault(u => u.email_usuario == usuarioEmailToken.email_usuario);
-                var tokenValido = contexto.tokens.FirstOrDefault(t => t.cadena_token == usuarioEmailToken.token_usuario);
+                var tokenValido = contexto.tokens.FirstOrDefault(t => t.cadena_token == token);
                 var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")

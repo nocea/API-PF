@@ -33,6 +33,18 @@ namespace API_PF.Controllers
             }
             return usuario; 
         }
+        [HttpGet("ObtenerUsuarioNombre/{nombreUsuario}")]
+        public ActionResult<Usuario> ObtenerUsuarioNombre(string nombreUsuario)
+        {
+            var usuario = contexto.usuarios.FirstOrDefault(u => u.nombreCompleto_usuario == nombreUsuario);
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+            return usuario;
+        }
+        //Intentar gestionar que al EDITAR no se edite si el email/alias que introduces ya existe en la base de datos y
+        //si es de ese usuario que deje cambiarlo pero si es de otro no
         [HttpPost("EditarUsuario")]
         public IActionResult EditarUsuario([FromBody] Usuario usuario)
         {

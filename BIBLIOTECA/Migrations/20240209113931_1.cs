@@ -38,7 +38,7 @@ namespace BIBLIOTECA.Migrations
                     alias_usuario = table.Column<string>(type: "text", nullable: true),
                     email_usuario = table.Column<string>(type: "text", nullable: true),
                     passwd_usuario = table.Column<string>(type: "text", nullable: true),
-                    token_usuario = table.Column<string>(type: "text", nullable: true)
+                    imagen_usuario = table.Column<byte[]>(type: "bytea", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -47,8 +47,8 @@ namespace BIBLIOTECA.Migrations
 
             migrationBuilder.InsertData(
                 table: "usuarios",
-                columns: new[] { "id_usuario", "alias_usuario", "email_usuario", "movil_usuario", "nombreCompleto_usuario", "passwd_usuario", "rol_usuario", "token_usuario" },
-                values: new object[] { 1, null, "admin@admin", null, "Administrador", "eb31b34db2f22a0030aa4f9306b77bfbbda728967e9feb88ea79ac206e657d29", "ADMIN", null });
+                columns: new[] { "id_usuario", "alias_usuario", "email_usuario", "imagen_usuario", "movil_usuario", "nombreCompleto_usuario", "passwd_usuario", "rol_usuario" },
+                values: new object[] { 1, null, "admin@admin", null, null, "Administrador", "eb31b34db2f22a0030aa4f9306b77bfbbda728967e9feb88ea79ac206e657d29", "ADMIN" });
         }
 
         /// <inheritdoc />

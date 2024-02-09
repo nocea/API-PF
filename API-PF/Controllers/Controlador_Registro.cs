@@ -5,6 +5,8 @@ using Microsoft.CodeAnalysis.Scripting;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
 using System.Security.Cryptography;
+using System.Drawing;
+using System.IO;
 using API_PF.Utils;
 
 namespace API_PF.Controllers
@@ -63,11 +65,17 @@ namespace API_PF.Controllers
                 }
                 string contraseñaEncriptada = Utils.Utils.HashPassword(nuevoUsuario.passwd_usuario, stringSalt);
                 nuevoUsuario.passwd_usuario = contraseñaEncriptada;
+                string rutaImagen = "C:\\Users\\Puesto10\\Desktop\\GITHUB\\VisualStudio(.NET)\\API-PF\\API-PF\\Utils\\fotoInicial.png";
+                byte[] imageBytes = ImageToByteArray(rutaImagen);
+                nuevoUsuario.imagen_usuario = imageBytes;
                 // Agrega el nuevo usuario al contexto
                 contexto.usuarios.Add(nuevoUsuario);
                 // Guarda los cambios en la base de datos
                 contexto.SaveChanges();
-
+                for (int i = 0; i < imageBytes.Length; i++)
+                {
+                    Console.WriteLine(imageBytes[i]);
+                }
                 // Devuelve un código de estado para confirmar que se ha creado el usuario
                 return CreatedAtAction(nameof(GetUsuarios), new { id = nuevoUsuario.id_usuario }, nuevoUsuario);
             }
@@ -77,7 +85,19 @@ namespace API_PF.Controllers
                 return StatusCode(500, new { Mensaje = "Error al registrar el usuario.", Error = ex.Message });
             }
         }
-        
+        static byte[] ImageToByteArray(string imagePath)
+        {
+            // Convertir la imagen en un arreglo de bytes
+            using (Image image = Image.FromFile(imagePath))
+            {
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    return memoryStream.ToArray();
+                }
+            }
+        }
+
 
     }
 }

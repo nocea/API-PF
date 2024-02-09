@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BIBLIOTECA.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20240208112959_1")]
+    [Migration("20240209113931_1")]
     partial class _1
     {
         /// <inheritdoc />
@@ -58,6 +58,9 @@ namespace BIBLIOTECA.Migrations
                     b.Property<string>("email_usuario")
                         .HasColumnType("text");
 
+                    b.Property<byte[]>("imagen_usuario")
+                        .HasColumnType("bytea");
+
                     b.Property<int?>("movil_usuario")
                         .HasColumnType("integer");
 
@@ -68,9 +71,6 @@ namespace BIBLIOTECA.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("rol_usuario")
-                        .HasColumnType("text");
-
-                    b.Property<string>("token_usuario")
                         .HasColumnType("text");
 
                     b.HasKey("id_usuario");
