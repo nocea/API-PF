@@ -19,5 +19,6 @@ namespace BIBLIOTECA
         public string? email_usuario { get; set; }
         public string? passwd_usuario { get; set; }
         public byte[]? imagen_usuario { get; set; }
+        public bool? registrado { get; set; }
     }
 }

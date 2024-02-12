@@ -67,6 +67,9 @@ namespace BIBLIOTECA.Migrations
                     b.Property<string>("passwd_usuario")
                         .HasColumnType("text");
 
+                    b.Property<bool?>("registrado")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("rol_usuario")
                         .HasColumnType("text");
 

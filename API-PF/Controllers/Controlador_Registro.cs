@@ -8,13 +8,15 @@ using System.Security.Cryptography;
 using System.Drawing;
 using System.IO;
 using API_PF.Utils;
+using System.Net.Mail;
+using System.Net;
 
 namespace API_PF.Controllers
-{   
+{
     [Route("api/[controller]")]
     [ApiController]
     public class Controlador_Registro : ControllerBase
-    {   
+    {
         //instancia del contexto para poder utilizarlo
         private readonly Contexto contexto;
         public Controlador_Registro(Contexto contexto)
@@ -68,10 +70,12 @@ namespace API_PF.Controllers
                 string rutaImagen = "C:\\Users\\Puesto10\\Desktop\\GITHUB\\VisualStudio(.NET)\\API-PF\\API-PF\\Utils\\fotoInicial.png";
                 byte[] imageBytes = ImageToByteArray(rutaImagen);
                 nuevoUsuario.imagen_usuario = imageBytes;
+                nuevoUsuario.registrado = false;
                 // Agrega el nuevo usuario al contexto
                 contexto.usuarios.Add(nuevoUsuario);
                 // Guarda los cambios en la base de datos
                 contexto.SaveChanges();
+                EnviarCorreoRecuperacion(nuevoUsuario.email_usuario);
                 for (int i = 0; i < imageBytes.Length; i++)
                 {
                     Console.WriteLine(imageBytes[i]);
@@ -95,6 +99,69 @@ namespace API_PF.Controllers
                     image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
                     return memoryStream.ToArray();
                 }
+            }
+        }
+        [HttpPost("ConfirmacionRegistro/{email}")]
+        public IActionResult ConfirmacionRegistro(string email)
+        {
+            try
+            {
+                var usuarioExistenteEmail = contexto.usuarios.FirstOrDefault(u => u.email_usuario == email);
+                if (usuarioExistenteEmail != null)
+                {
+                    usuarioExistenteEmail.registrado = true;
+                    // Devuelve un conflicto con el mensaje
+                    contexto.SaveChanges();
+                    return Ok(new { Mensaje = "Se ha confirmado el registro." });
+                }
+                else
+                {
+                    return Conflict();
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Mensaje = "Error al registrar el usuario.", Error = ex.Message });
+            }
+        }
+        private void EnviarCorreoRecuperacion(string destinatario)
+        {
+            try
+            {
+                var config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+                var correoConfiguracion = config.GetSection("CorreoConfiguracion");
+                string urlRecuperacion = "https://localhost:7237/Controlador_Registro/ConfirmacionRegistro?email=" + destinatario;
+
+
+                var smtpClient = new SmtpClient(correoConfiguracion["ServidorSmtp"])
+                {
+                    Port = int.Parse(correoConfiguracion["Puerto"]),
+                    Credentials = new NetworkCredential(correoConfiguracion["Usuario"], correoConfiguracion["Contrasena"]),
+                    EnableSsl = true,
+                };
+
+                // Crear el mensaje de correo
+                var mensaje = new MailMessage
+                {
+                    From = new MailAddress(correoConfiguracion["Usuario"]),
+                    Subject = "Recuperación de Contraseña",
+                    Body = $"Haz clic en el siguiente enlace para recuperar tu contraseña: <a href='{urlRecuperacion}'>{urlRecuperacion}</a>",
+                    IsBodyHtml = true,
+                };
+
+                // Añadir destinatario
+                mensaje.To.Add(destinatario);
+
+                // Enviar el correo
+                smtpClient.Send(mensaje);
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores relacionados con el envío de correo (puedes registrarlos, lanzar una excepción personalizada, etc.)
+                Console.WriteLine($"Error al enviar el correo: {ex.Message}");
             }
         }
 
