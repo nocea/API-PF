@@ -1,0 +1,8 @@
+[2024-02-12 14:07:53] Un usuario ha iniciado sesión
+[2024-02-12 14:12:09] Login-Contraseña incorrecta
+[2024-02-12 14:13:11] Login-Email incorrecto
+[2024-02-12 14:13:38] Login-Contraseña incorrecta
+[2024-02-12 14:13:43] Un usuario ha iniciado sesión
+[2024-02-12 14:16:26] Un usuario ha iniciado sesión
+[2024-02-12 14:20:00] Login-Error confirmacion de registro
+[2024-02-12 14:21:22] Un usuario ha iniciado sesión

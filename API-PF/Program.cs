@@ -1,3 +1,4 @@
+using API_PF.Utils;
 using BIBLIOTECA;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,3 +28,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+Utils.Log("Se ha iniciado la api");

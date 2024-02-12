@@ -30,20 +30,29 @@ namespace API_PF.Controllers
                 usuarioLogin.passwd_usuario= Utils.Utils.HashPassword(usuarioLogin.passwd_usuario, stringSalt);
                 if (usuarioExistente!=null)
                 {
-                    if (usuarioLogin.passwd_usuario== usuarioExistente.passwd_usuario)
-                    {   
+                    if (usuarioExistente.registrado == false)
+                    {
+                        Utils.Utils.Log("Login-Error confirmacion de registro");
+                        return Conflict(new { mensaje = "No se ha confirmado el registro de usuario" });
+                    }
+                    else if (usuarioLogin.passwd_usuario== usuarioExistente.passwd_usuario)
+                    {
 
                         // Contraseña correcta, procede con el inicio de sesión
+                        Utils.Utils.Log("Un usuario ha iniciado sesión");
                         return Ok(new {usuario = usuarioExistente });
+                        
                     }
                     else
                     {
                         // Contraseña incorrecta
+                        Utils.Utils.Log("Login-Contraseña incorrecta");
                         return Conflict(new { mensaje = "Contraseña incorrecta" });
                     }
                 }
                 else
                 {
+                    Utils.Utils.Log("Login-Email incorrecto");
                     return Conflict(new { mensaje = "Email no encontrado" });
                 }
             }
@@ -51,6 +60,7 @@ namespace API_PF.Controllers
             {
                 return StatusCode(500, new { Mensaje = "Error al iniciar sesión.", Error = ex.Message });
             }
+            
         }
         
     }
