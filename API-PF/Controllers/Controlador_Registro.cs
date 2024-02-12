@@ -24,15 +24,6 @@ namespace API_PF.Controllers
             this.contexto = contexto;
         }
         /// <summary>
-        /// Método que sirve para traer todos los usuarios de la base de datos a una lista
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public List<Usuario> GetUsuarios()
-        {
-            return contexto.usuarios.ToList();
-        }
-        /// <summary>
         /// Método que comprueba que el usuario introducido existe,según su email/alias
         /// y si no existe lo crea.
         /// </summary>
@@ -54,7 +45,7 @@ namespace API_PF.Controllers
                 if (usuarioExistenteEmail != null)
                 {
                     // Devuelve un conflicto con el mensaje
-                    return Conflict(new { Mensaje = "El correo electrónico ya existe." });
+                    return Conflict(new { mensaje = "El correo electrónico ya existe." });
                 }
 
                 // Comprueba si el alias ya existe
@@ -63,11 +54,11 @@ namespace API_PF.Controllers
                 if (usuarioExistenteAlias != null)
                 {
                     // Usuario con el mismo alias ya registrado
-                    return Conflict(new { Mensaje = "El alias de usuario ya existe." });
+                    return Conflict(new { mensaje = "El alias de usuario ya existe." });
                 }
                 string contraseñaEncriptada = Utils.Utils.HashPassword(nuevoUsuario.passwd_usuario, stringSalt);
                 nuevoUsuario.passwd_usuario = contraseñaEncriptada;
-                string rutaImagen = "C:\\Users\\Puesto10\\Desktop\\GITHUB\\VisualStudio(.NET)\\API-PF\\API-PF\\Utils\\fotoInicial.png";
+                string rutaImagen = "Utils/fotoInicial.png";
                 byte[] imageBytes = ImageToByteArray(rutaImagen);
                 nuevoUsuario.imagen_usuario = imageBytes;
                 nuevoUsuario.registrado = false;
@@ -76,17 +67,13 @@ namespace API_PF.Controllers
                 // Guarda los cambios en la base de datos
                 contexto.SaveChanges();
                 EnviarCorreoRecuperacion(nuevoUsuario.email_usuario);
-                for (int i = 0; i < imageBytes.Length; i++)
-                {
-                    Console.WriteLine(imageBytes[i]);
-                }
                 // Devuelve un código de estado para confirmar que se ha creado el usuario
-                return CreatedAtAction(nameof(GetUsuarios), new { id = nuevoUsuario.id_usuario }, nuevoUsuario);
+                return Ok();
             }
             catch (Exception ex)
             {
                 // Maneja cualquier error
-                return StatusCode(500, new { Mensaje = "Error al registrar el usuario.", Error = ex.Message });
+                return Conflict(new { mensaje = "Error al registrar el usuario." });
             }
         }
         static byte[] ImageToByteArray(string imagePath)
@@ -112,16 +99,16 @@ namespace API_PF.Controllers
                     usuarioExistenteEmail.registrado = true;
                     // Devuelve un conflicto con el mensaje
                     contexto.SaveChanges();
-                    return Ok(new { Mensaje = "Se ha confirmado el registro." });
+                    return Ok();
                 }
                 else
                 {
-                    return Conflict();
+                    return Conflict(new { mensaje = "Error al encontrar el usuario." });
                 }
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Mensaje = "Error al registrar el usuario.", Error = ex.Message });
+                return Conflict(new { mensaje = "Error al registrar el usuario."});
             }
         }
         private void EnviarCorreoRecuperacion(string destinatario)

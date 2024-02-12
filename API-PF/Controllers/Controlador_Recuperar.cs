@@ -36,16 +36,16 @@ namespace API_PF.Controllers
                     contexto.tokens.Add(nuevoToken);
                     contexto.SaveChanges();
                     EnviarCorreoRecuperacion(usuarioExistente.email_usuario, nuevoToken.cadena_token);
-                    return Ok(new { mensaje = "Token-Hecho" });
+                    return Ok();
                 }
                 else
                 {
-                    return Conflict(new { mensaje = "Email no encontrado" });
+                    return Conflict(new { mensaje = "[ERROR-RecuperarContrasena([FromBody] Usuario usuarioRecuperar)]Email no encontrado" });
                 }
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Mensaje = "Error al recuperar contraseña.", Error = ex.Message });
+                return Conflict(new { Mensaje = "[ERROR-RecuperarContrasena([FromBody] Usuario usuarioRecuperar)]Error al recuperar contraseña."});
             }
         }
         [HttpPost("CambiarContrasena/{token}")]
@@ -65,24 +65,24 @@ namespace API_PF.Controllers
                 {
                     if (tokenValido.fechaFin_token < DateTime.Now)
                     {
-                        return Conflict(new { mensaje = "Tiempo de uso token pasado" });
+                        return Conflict(new { mensaje = "[ERROR-CambiarContrasena([FromBody] Usuario usuarioEmailToken,string token)]Tiempo de uso token pasado" });
                     }
                     else
                     {
                         string contraseñaEncriptada = HashPassword(usuarioEmailToken.passwd_usuario, stringSalt);
                         usuarioExistente.passwd_usuario = contraseñaEncriptada;
                         contexto.SaveChanges();
-                        return Ok(new { mensaje = "token ok-email ok-contraseña nueva ok" });
+                        return Ok();
                     }
                 }
                 else
                 {
-                    return Conflict(new { mensaje = "Email o token no valido" });
+                    return Conflict(new { mensaje = "[ERROR-CambiarContrasena([FromBody] Usuario usuarioEmailToken,string token)]Email o token no valido" });
                 }
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Mensaje = "Error al cambiar contraseña", Error = ex.Message });
+                return Conflict( new { Mensaje = "[ERROR-CambiarContrasena([FromBody] Usuario usuarioEmailToken,string token)]Error al cambiar contraseña"});
             }
             static string HashPassword(string password, string salt)
             {
