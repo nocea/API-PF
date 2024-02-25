@@ -22,7 +22,8 @@ namespace BIBLIOTECA
                     rol_usuario = "ADMIN",
                     email_usuario="admin@admin",
                     //Admin1234
-                    passwd_usuario="eb31b34db2f22a0030aa4f9306b77bfbbda728967e9feb88ea79ac206e657d29"
+                    passwd_usuario="eb31b34db2f22a0030aa4f9306b77bfbbda728967e9feb88ea79ac206e657d29",
+                    registrado=true
                 }
             );
         }

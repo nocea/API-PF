@@ -9,3 +9,46 @@
 [2024-02-12 20:00:47] Un usuario ha iniciado sesión
 [2024-02-12 20:29:14] Login-Error confirmacion de registro
 [2024-02-12 20:29:34] Un usuario ha iniciado sesión
+[2024-02-25 11:10:45] Un usuario ha iniciado sesión
+[2024-02-25 11:12:11] Login-Error confirmacion de registro
+[2024-02-25 11:14:12] Login-Error confirmacion de registro
+[2024-02-25 11:14:18] Login-Error confirmacion de registro
+[2024-02-25 11:14:26] Login-Error confirmacion de registro
+[2024-02-25 11:14:43] Login-Error confirmacion de registro
+[2024-02-25 11:19:30] Un usuario ha iniciado sesión
+[2024-02-25 11:25:01] Un usuario ha iniciado sesión
+[2024-02-25 11:25:22] Un usuario ha iniciado sesión
+[2024-02-25 11:29:22] Un usuario ha iniciado sesión
+[2024-02-25 11:29:36] Un usuario ha iniciado sesión
+[2024-02-25 11:38:11] Un usuario ha iniciado sesión
+[2024-02-25 11:38:52] Un usuario ha iniciado sesión
+[2024-02-25 11:49:01] Un usuario ha iniciado sesión
+[2024-02-25 11:53:54] Un usuario ha iniciado sesión
+[2024-02-25 12:12:36] Un usuario ha iniciado sesión
+[2024-02-25 12:14:34] Un usuario ha iniciado sesión
+[2024-02-25 12:15:38] Un usuario ha iniciado sesión
+[2024-02-25 12:18:06] Un usuario ha iniciado sesión
+[2024-02-25 12:19:27] Un usuario ha iniciado sesión
+[2024-02-25 12:19:37] Un usuario ha iniciado sesión
+[2024-02-25 12:21:25] Un usuario ha iniciado sesión
+[2024-02-25 12:23:23] Un usuario ha iniciado sesión
+[2024-02-25 12:27:35] Un usuario ha iniciado sesión
+[2024-02-25 12:31:45] Un usuario ha iniciado sesión
+[2024-02-25 12:37:27] Un usuario ha iniciado sesión
+[2024-02-25 12:38:28] Un usuario ha iniciado sesión
+[2024-02-25 12:43:54] Un usuario ha iniciado sesión
+[2024-02-25 12:45:06] Un usuario ha iniciado sesión
+[2024-02-25 12:45:47] Un usuario ha iniciado sesión
+[2024-02-25 12:46:10] Un usuario ha iniciado sesión
+[2024-02-25 12:48:49] Un usuario ha iniciado sesión
+[2024-02-25 12:49:47] Un usuario ha iniciado sesión
+[2024-02-25 12:50:39] Un usuario ha iniciado sesión
+[2024-02-25 12:51:28] Un usuario ha iniciado sesión
+[2024-02-25 12:53:05] Login-Contraseña incorrecta
+[2024-02-25 12:53:09] Un usuario ha iniciado sesión
+[2024-02-25 12:54:21] Un usuario ha iniciado sesión
+[2024-02-25 12:55:52] Un usuario ha iniciado sesión
+[2024-02-25 12:57:12] Un usuario ha iniciado sesión
+[2024-02-25 12:57:46] Login-Email incorrecto
+[2024-02-25 12:58:49] Login-Contraseña incorrecta
+[2024-02-25 12:58:53] Un usuario ha iniciado sesión
