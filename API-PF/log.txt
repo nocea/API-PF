@@ -52,3 +52,29 @@
 [2024-02-25 12:57:46] Login-Email incorrecto
 [2024-02-25 12:58:49] Login-Contraseña incorrecta
 [2024-02-25 12:58:53] Un usuario ha iniciado sesión
+[2024-02-25 16:05:02] Un usuario ha iniciado sesión
+[2024-02-25 16:06:46] Un usuario ha iniciado sesión
+[2024-02-25 16:09:06] Un usuario ha iniciado sesión
+[2024-02-25 16:12:04] Un usuario ha iniciado sesión
+[2024-02-25 16:13:33] Un usuario ha iniciado sesión
+[2024-02-25 16:15:43] Un usuario ha iniciado sesión
+[2024-02-25 16:47:34] Un usuario ha iniciado sesión
+[2024-02-25 16:49:12] Un usuario ha iniciado sesión
+[2024-02-25 16:50:54] Un usuario ha iniciado sesión
+[2024-02-25 16:51:49] Un usuario ha iniciado sesión
+[2024-02-25 16:56:11] Un usuario ha iniciado sesión
+[2024-02-25 16:58:59] Un usuario ha iniciado sesión
+[2024-02-25 17:02:34] Un usuario ha iniciado sesión
+[2024-02-25 17:05:19] Un usuario ha iniciado sesión
+[2024-02-25 17:14:38] Un usuario ha iniciado sesión
+[2024-02-25 17:16:13] Un usuario ha iniciado sesión
+[2024-02-25 17:17:07] Un usuario ha iniciado sesión
+[2024-02-25 17:20:48] Un usuario ha iniciado sesión
+[2024-02-25 17:23:50] Un usuario ha iniciado sesión
+[2024-02-25 17:25:15] Un usuario ha iniciado sesión
+[2024-02-25 17:26:45] Un usuario ha iniciado sesión
+[2024-02-25 17:28:49] Un usuario ha iniciado sesión
+[2024-02-25 17:29:36] Un usuario ha iniciado sesión
+[2024-02-25 17:32:41] Un usuario ha iniciado sesión
+[2024-02-25 17:34:16] Un usuario ha iniciado sesión
+[2024-02-25 17:34:58] Un usuario ha iniciado sesión

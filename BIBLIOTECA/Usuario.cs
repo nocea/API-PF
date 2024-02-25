@@ -20,5 +20,6 @@ namespace BIBLIOTECA
         public string? passwd_usuario { get; set; }
         public byte[]? imagen_usuario { get; set; }
         public bool? registrado { get; set; }
+        public ICollection<Post>? Posts { get; set; }
     }
 }

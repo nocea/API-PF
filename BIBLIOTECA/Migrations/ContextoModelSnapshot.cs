@@ -22,6 +22,33 @@ namespace BIBLIOTECA.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("BIBLIOTECA.Post", b =>
+                {
+                    b.Property<int?>("id_post")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int?>("id_post"));
+
+                    b.Property<int?>("UsuarioId")
+                        .HasColumnType("integer");
+
+                    b.Property<byte[]>("imagen_post")
+                        .HasColumnType("bytea");
+
+                    b.Property<string>("pie_post")
+                        .HasColumnType("text");
+
+                    b.Property<string>("titulo_post")
+                        .HasColumnType("text");
+
+                    b.HasKey("id_post");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Posts");
+                });
+
             modelBuilder.Entity("BIBLIOTECA.Token", b =>
                 {
                     b.Property<int>("id_token")
@@ -87,6 +114,20 @@ namespace BIBLIOTECA.Migrations
                             registrado = true,
                             rol_usuario = "ADMIN"
                         });
+                });
+
+            modelBuilder.Entity("BIBLIOTECA.Post", b =>
+                {
+                    b.HasOne("BIBLIOTECA.Usuario", "Usuario")
+                        .WithMany("Posts")
+                        .HasForeignKey("UsuarioId");
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("BIBLIOTECA.Usuario", b =>
+                {
+                    b.Navigation("Posts");
                 });
 #pragma warning restore 612, 618
         }
