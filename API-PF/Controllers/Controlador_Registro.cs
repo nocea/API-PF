@@ -134,8 +134,8 @@ namespace API_PF.Controllers
                 var mensaje = new MailMessage
                 {
                     From = new MailAddress(correoConfiguracion["Usuario"]),
-                    Subject = "Recuperación de Contraseña",
-                    Body = $"Haz clic en el siguiente enlace para recuperar tu contraseña: <a href='{urlRecuperacion}'>{urlRecuperacion}</a>",
+                    Subject = "Confirmación registro BlogShip",
+                    Body = $"Haz clic en el siguiente enlace para confirmar tu registro: <a href='{urlRecuperacion}'>{urlRecuperacion}</a>",
                     IsBodyHtml = true,
                 };
 

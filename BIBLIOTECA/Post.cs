@@ -18,8 +18,9 @@ namespace BIBLIOTECA
 
         public int? UsuarioId { get; set; }
 
-        // Propiedad de navegación al usuario que publicó el post
+        
         public Usuario? Usuario { get; set; }
+        public ICollection<Comentario>? Comentarios { get; set; }
 
     }
 }

@@ -22,6 +22,32 @@ namespace BIBLIOTECA.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("BIBLIOTECA.Comentario", b =>
+                {
+                    b.Property<int?>("id_comentario")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int?>("id_comentario"));
+
+                    b.Property<int?>("PostId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("UsuarioId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("contenido_comentario")
+                        .HasColumnType("text");
+
+                    b.HasKey("id_comentario");
+
+                    b.HasIndex("PostId");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Comentarios");
+                });
+
             modelBuilder.Entity("BIBLIOTECA.Post", b =>
                 {
                     b.Property<int?>("id_post")
@@ -116,6 +142,21 @@ namespace BIBLIOTECA.Migrations
                         });
                 });
 
+            modelBuilder.Entity("BIBLIOTECA.Comentario", b =>
+                {
+                    b.HasOne("BIBLIOTECA.Post", "Post")
+                        .WithMany("Comentarios")
+                        .HasForeignKey("PostId");
+
+                    b.HasOne("BIBLIOTECA.Usuario", "Usuario")
+                        .WithMany("Comentarios")
+                        .HasForeignKey("UsuarioId");
+
+                    b.Navigation("Post");
+
+                    b.Navigation("Usuario");
+                });
+
             modelBuilder.Entity("BIBLIOTECA.Post", b =>
                 {
                     b.HasOne("BIBLIOTECA.Usuario", "Usuario")
@@ -125,8 +166,15 @@ namespace BIBLIOTECA.Migrations
                     b.Navigation("Usuario");
                 });
 
+            modelBuilder.Entity("BIBLIOTECA.Post", b =>
+                {
+                    b.Navigation("Comentarios");
+                });
+
             modelBuilder.Entity("BIBLIOTECA.Usuario", b =>
                 {
+                    b.Navigation("Comentarios");
+
                     b.Navigation("Posts");
                 });
 #pragma warning restore 612, 618

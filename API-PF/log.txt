@@ -78,3 +78,22 @@
 [2024-02-25 17:32:41] Un usuario ha iniciado sesión
 [2024-02-25 17:34:16] Un usuario ha iniciado sesión
 [2024-02-25 17:34:58] Un usuario ha iniciado sesión
+[2024-02-25 18:18:42] Login-Error confirmacion de registro
+[2024-02-25 18:37:38] Un usuario ha iniciado sesión
+[2024-02-25 18:38:54] Un usuario ha iniciado sesión
+[2024-02-25 18:40:19] Un usuario ha iniciado sesión
+[2024-02-25 18:44:16] Un usuario ha iniciado sesión
+[2024-02-25 18:46:20] Un usuario ha iniciado sesión
+[2024-02-25 18:47:41] Un usuario ha iniciado sesión
+[2024-02-25 18:50:29] Un usuario ha iniciado sesión
+[2024-02-25 18:52:37] Un usuario ha iniciado sesión
+[2024-02-25 18:53:57] Un usuario ha iniciado sesión
+[2024-02-25 19:00:21] Un usuario ha iniciado sesión
+[2024-02-25 19:03:02] Un usuario ha iniciado sesión
+[2024-02-25 19:05:25] Un usuario ha iniciado sesión
+[2024-02-25 19:07:54] Un usuario ha iniciado sesión
+[2024-02-25 19:28:11] Un usuario ha iniciado sesión
+[2024-02-25 19:34:24] Login-Contraseña incorrecta
+[2024-02-25 19:37:43] Un usuario ha iniciado sesión
+[2024-02-25 19:43:41] Un usuario ha iniciado sesión
+[2024-02-25 19:44:31] Un usuario ha iniciado sesión

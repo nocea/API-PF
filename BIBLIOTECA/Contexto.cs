@@ -33,6 +33,7 @@ namespace BIBLIOTECA
         }
         //Entidades(dbSet)
         public DbSet<Post> Posts { get; set; }
+        public DbSet<Comentario> Comentarios { get; set; }
         public DbSet<Usuario> usuarios { get; set; }
         public DbSet<Token> tokens { get; set; }
 

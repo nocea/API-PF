@@ -21,5 +21,6 @@ namespace BIBLIOTECA
         public byte[]? imagen_usuario { get; set; }
         public bool? registrado { get; set; }
         public ICollection<Post>? Posts { get; set; }
+        public ICollection<Comentario>? Comentarios { get; set; }
     }
 }
