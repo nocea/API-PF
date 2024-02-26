@@ -33,6 +33,19 @@ namespace API_PF.Controllers
                 return Conflict(new { mensaje = "[ERROR-ObtenerUsuarios()]No se ha podido obtener la lista de usuarios." });
             }
         }
+        [HttpGet("AllPosts")]
+        public IActionResult AllPosts()
+        {
+            try
+            {
+                var posts = contexto.Posts.ToList();//guardo todos los usuarios en la lista de usuarios
+                return Ok(posts);//devuelvo el mensaje de ok y la lista
+            }
+            catch (Exception ex)
+            {
+                return Conflict(new { mensaje = "[ERROR-ObtenerUsuarios()]No se ha podido obtener la lista de posts." });
+            }
+        }
         /// <summary>
         /// Método que devuelve un usuario según la id introducida
         /// </summary>
@@ -72,6 +85,7 @@ namespace API_PF.Controllers
                 return Conflict(new { mensaje = "[ERROR-ObtenerUsuarioNombre(string nombreUsuario)]No se ha podido obtener el usuario" });
             }            
         }
+        
         [HttpPost("EditarUsuario")]
         public IActionResult EditarUsuario([FromBody] Usuario usuario)
         {
@@ -98,6 +112,26 @@ namespace API_PF.Controllers
                 return Conflict(new { mensaje = "[ERROR-EditarUsuario([FromBody] Usuario usuario)]Error al editar el usuario" });
             }
             
+        }
+        [HttpDelete("BorrarPost/{idPost}")]
+        public IActionResult BorrarPost(int idPost)
+        {
+            try
+            {
+                var post = contexto.Posts.Find(idPost);
+
+                if (post == null )
+                {
+                    return Conflict(new { mensaje = "El post no fue encontrado o no se puede eliminar" });
+                }
+                contexto.Posts.Remove(post);
+                contexto.SaveChanges();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return Conflict(new { mensaje = "[ERROR-EliminarUsuario(int id_usuario)]Error al borrar el usuario" });
+            }
         }
         [HttpDelete("EliminarUsuario/{id_usuario}")]
         public IActionResult EliminarUsuario(int id_usuario)

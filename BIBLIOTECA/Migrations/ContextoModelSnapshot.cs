@@ -146,11 +146,13 @@ namespace BIBLIOTECA.Migrations
                 {
                     b.HasOne("BIBLIOTECA.Post", "Post")
                         .WithMany("Comentarios")
-                        .HasForeignKey("PostId");
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("BIBLIOTECA.Usuario", "Usuario")
                         .WithMany("Comentarios")
-                        .HasForeignKey("UsuarioId");
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Post");
 
@@ -161,7 +163,8 @@ namespace BIBLIOTECA.Migrations
                 {
                     b.HasOne("BIBLIOTECA.Usuario", "Usuario")
                         .WithMany("Posts")
-                        .HasForeignKey("UsuarioId");
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Usuario");
                 });
