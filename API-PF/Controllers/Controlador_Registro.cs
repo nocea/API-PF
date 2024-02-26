@@ -68,6 +68,7 @@ namespace API_PF.Controllers
                 contexto.SaveChanges();
                 EnviarCorreoRecuperacion(nuevoUsuario.email_usuario);
                 // Devuelve un código de estado para confirmar que se ha creado el usuario
+                Utils.Utils.Log("Se ha registrado un usuario nuevo:" + nuevoUsuario.email_usuario);
                 return Ok();
             }
             catch (Exception ex)
@@ -76,6 +77,11 @@ namespace API_PF.Controllers
                 return Conflict(new { mensaje = "Error al registrar el usuario." });
             }
         }
+        /// <summary>
+        /// Método para convertir un image a array
+        /// </summary>
+        /// <param name="imagePath"></param>
+        /// <returns></returns>
         static byte[] ImageToByteArray(string imagePath)
         {
             // Convertir la imagen en un arreglo de bytes
@@ -88,6 +94,11 @@ namespace API_PF.Controllers
                 }
             }
         }
+        /// <summary>
+        /// Método para confirmar que se ha pinchado en el enlace de registro y hacer validar el usuario registrado
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         [HttpPost("ConfirmacionRegistro/{email}")]
         public IActionResult ConfirmacionRegistro(string email)
         {
@@ -97,8 +108,8 @@ namespace API_PF.Controllers
                 if (usuarioExistenteEmail != null)
                 {
                     usuarioExistenteEmail.registrado = true;
-                    // Devuelve un conflicto con el mensaje
                     contexto.SaveChanges();
+                    Utils.Utils.Log("Se ha confirmado el registro del usuario:" + usuarioExistenteEmail.email_usuario);
                     return Ok();
                 }
                 else
@@ -111,6 +122,10 @@ namespace API_PF.Controllers
                 return Conflict(new { mensaje = "Error al registrar el usuario."});
             }
         }
+        /// <summary>
+        /// Método par enviar un correo de confirmacion de registro
+        /// </summary>
+        /// <param name="destinatario"></param>
         private void EnviarCorreoRecuperacion(string destinatario)
         {
             try
@@ -147,7 +162,7 @@ namespace API_PF.Controllers
             }
             catch (Exception ex)
             {
-                // Manejar errores relacionados con el envío de correo (puedes registrarlos, lanzar una excepción personalizada, etc.)
+               
                 Console.WriteLine($"Error al enviar el correo: {ex.Message}");
             }
         }

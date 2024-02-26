@@ -13,6 +13,10 @@ namespace API_PF.Controllers
         {
             this.contexto = contexto;
         }
+        /// <summary>
+        /// Método que devuelve una lista de posts
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult AllPosts()
         {
@@ -26,6 +30,11 @@ namespace API_PF.Controllers
                 return Conflict(new { mensaje = "No se ha podido obtener la lista de posts." });
             }
         }
+        /// <summary>
+        /// Método que devuelve todos los comentarios de un post en concreto
+        /// </summary>
+        /// <param name="idPost"></param>
+        /// <returns></returns>
         [HttpGet("AllComentarios/{idPost}")]
         public IActionResult AllComentarios(string idPost)
         {
@@ -40,6 +49,11 @@ namespace API_PF.Controllers
                 return Conflict(new { mensaje = "No se ha podido obtener la lista de posts." });
             }
         }
+        /// <summary>
+        /// Método que sirve para cambiar la imagen de un usuario que ya existe
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         [HttpPost("CambiarImagen")]
         public IActionResult CambiarImagen([FromBody] Usuario usuario)
         {
@@ -57,15 +71,20 @@ namespace API_PF.Controllers
                 return Conflict(new { mensaje = "Error al registrar el post." });
             }
         }
+        /// <summary>
+        /// Método para crear un nuevo post
+        /// </summary>
+        /// <param name="post"></param>
+        /// <returns></returns>
         [HttpPost]
-        public IActionResult RegistrarUsuario([FromBody] Post post)
+        public IActionResult RegistrarPost([FromBody] Post post)
         {
             try
             {
                 var usuarioExistenteEmail = contexto.usuarios.FirstOrDefault(p => p.id_usuario == post.UsuarioId);
                 if (usuarioExistenteEmail == null)
                 {
-                    // Si el usuario no se encuentra, retornar un error
+                    // Si el usuario no se encuentra
                     return Conflict(new { mensaje = "El usuario especificado no existe." });
                 }
                 contexto.Posts.Add(post);
@@ -78,6 +97,11 @@ namespace API_PF.Controllers
                 return Conflict(new { mensaje = "Error al registrar el post." });
             }
         }
+        /// <summary>
+        /// Método para crear un comentario nuevo
+        /// </summary>
+        /// <param name="comentario"></param>
+        /// <returns></returns>
         [HttpPost("CrearComentario")]
         public IActionResult CrearComentario([FromBody] Comentario comentario)
         {
@@ -86,7 +110,7 @@ namespace API_PF.Controllers
                 var usuario = contexto.usuarios.FirstOrDefault(u => u.id_usuario == comentario.UsuarioId);
                 if (usuario == null)
                 {
-                    // Si el usuario no se encuentra, retornar un error
+                    // Si el usuario no se encuentra
                     return Conflict(new { mensaje = "El usuario especificado no existe." });
                 }
 
@@ -96,7 +120,7 @@ namespace API_PF.Controllers
             }
             catch (Exception ex)
             {
-                // Maneja cualquier error
+                
                 return Conflict(new { mensaje = "Error al registrar el post." });
             }
         }

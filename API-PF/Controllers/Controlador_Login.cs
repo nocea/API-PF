@@ -15,31 +15,38 @@ namespace API_PF.Controllers
         {
             this.contexto = contexto;
         }
+        /// <summary>
+        /// Método para el inicio de sesión
+        /// </summary>
+        /// <param name="usuarioLogin"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult IniciarSesion([FromBody] Usuario usuarioLogin)
         {
             try
             {       
-                var usuarioExistente = contexto.usuarios.FirstOrDefault(u => u.email_usuario == usuarioLogin.email_usuario);
+                var usuarioExistente = contexto.usuarios.FirstOrDefault(u => u.email_usuario == usuarioLogin.email_usuario);//busco el usuario por email
                 var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
                 .Build();
                 var salt = config.GetSection("Salt");
                 string stringSalt = salt["string"];
+                //encripto su contraseña
                 usuarioLogin.passwd_usuario= Utils.Utils.HashPassword(usuarioLogin.passwd_usuario, stringSalt);
                 if (usuarioExistente!=null)
                 {
-                    if (usuarioExistente.registrado == false)
+                    if (usuarioExistente.registrado == false)//si no ha entrado en el link de registro no se ha cambiado a true
                     {
                         Utils.Utils.Log("Login-Error confirmacion de registro");
                         return Conflict(new { mensaje = "No se ha confirmado el registro de usuario" });
                     }
-                    else if (usuarioLogin.passwd_usuario== usuarioExistente.passwd_usuario)
+                    else if (usuarioLogin.passwd_usuario== usuarioExistente.passwd_usuario)//si la contraseña coincide
                     {
 
                         // Contraseña correcta, procede con el inicio de sesión
-                        Utils.Utils.Log("Un usuario ha iniciado sesión");
+                        Utils.Utils.Log("Un usuario ha iniciado sesión:"+usuarioExistente.email_usuario);
+                       
                         return Ok(new {usuario = usuarioExistente });
                     }
                     else
@@ -57,6 +64,7 @@ namespace API_PF.Controllers
             }
             catch (Exception ex)
             {
+                Utils.Utils.Log("Error en el login");
                 return Conflict(new { Mensaje = "[ERROR-IniciarSesion([FromBody] Usuario usuarioLogin)]Error al iniciar sesión." });
             }
         }

@@ -17,44 +17,55 @@ namespace API_PF.Controllers
         {
             this.contexto = contexto;
         }
-
+        /// <summary>
+        /// Método para recuperar la contraseña por email
+        /// </summary>
+        /// <param name="usuarioRecuperar"></param>
+        /// <returns></returns>
         [HttpPost("RecuperarContrasena")]
         public IActionResult RecuperarContrasena([FromBody] Usuario usuarioRecuperar)
         {
             try
             {
                 
-                var usuarioExistente = contexto.usuarios.FirstOrDefault(u => u.email_usuario == usuarioRecuperar.email_usuario);
+                var usuarioExistente = contexto.usuarios.FirstOrDefault(u => u.email_usuario == usuarioRecuperar.email_usuario);//busco el email del usuario y lo guardo
                 if (usuarioExistente != null)
                 {
                     var nuevoToken = new Token
                     {
-                        cadena_token = GenerarNuevoToken(),
-                        fechaFin_token = DateTime.Now.AddHours(24)
+                        cadena_token = GenerarNuevoToken(),//genero un token
+                        fechaFin_token = DateTime.Now.AddHours(24)//le añado tiempo a la fecha fin
 
                     };
                     contexto.tokens.Add(nuevoToken);
-                    contexto.SaveChanges();
+                    contexto.SaveChanges();//guardo el token y mando el email
                     EnviarCorreoRecuperacion(usuarioExistente.email_usuario, nuevoToken.cadena_token);
+                    Utils.Utils.Log("Se ha enviado un correo de recuperación al email:"+usuarioExistente.email_usuario);
                     return Ok();
                 }
                 else
                 {
-                    return Conflict(new { mensaje = "[ERROR-RecuperarContrasena([FromBody] Usuario usuarioRecuperar)]Email no encontrado" });
+                    return Conflict(new { mensaje = "Email no encontrado" });
                 }
             }
             catch (Exception ex)
             {
-                return Conflict(new { Mensaje = "[ERROR-RecuperarContrasena([FromBody] Usuario usuarioRecuperar)]Error al recuperar contraseña."});
+                return Conflict(new { Mensaje = "Error al recuperar contraseña."});
             }
         }
+        /// <summary>
+        /// Método que cambia la contraseña comprobando que no se haya pasado la fecha limite del token
+        /// </summary>
+        /// <param name="usuarioEmailToken"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         [HttpPost("CambiarContrasena/{token}")]
         public IActionResult CambiarContrasena([FromBody] Usuario usuarioEmailToken,string token)
         {
             try
             {
-                var usuarioExistente = contexto.usuarios.FirstOrDefault(u => u.email_usuario == usuarioEmailToken.email_usuario);
-                var tokenValido = contexto.tokens.FirstOrDefault(t => t.cadena_token == token);
+                var usuarioExistente = contexto.usuarios.FirstOrDefault(u => u.email_usuario == usuarioEmailToken.email_usuario);//obtengo el email 
+                var tokenValido = contexto.tokens.FirstOrDefault(t => t.cadena_token == token);//obtengo el token
                 var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
@@ -62,28 +73,30 @@ namespace API_PF.Controllers
                 var salt = config.GetSection("Salt");
                 string stringSalt = salt["string"];
                 if (usuarioExistente != null && tokenValido != null)
-                {
+                {   //si se ha pasado el tiempo
                     if (tokenValido.fechaFin_token < DateTime.Now)
                     {
-                        return Conflict(new { mensaje = "[ERROR-CambiarContrasena([FromBody] Usuario usuarioEmailToken,string token)]Tiempo de uso token pasado" });
+                        return Conflict(new { mensaje = "Tiempo de uso token pasado" });
                     }
                     else
                     {
-                        string contraseñaEncriptada = HashPassword(usuarioEmailToken.passwd_usuario, stringSalt);
-                        usuarioExistente.passwd_usuario = contraseñaEncriptada;
-                        contexto.SaveChanges();
+                        string contraseñaEncriptada = HashPassword(usuarioEmailToken.passwd_usuario, stringSalt);//encripto la contraseña
+                        usuarioExistente.passwd_usuario = contraseñaEncriptada;//la cambio  
+                        contexto.SaveChanges();//guardo los cambios
+                        Utils.Utils.Log("Se ha cambiado la contraseña de un usuario:"+usuarioExistente.email_usuario);
                         return Ok();
                     }
                 }
                 else
                 {
-                    return Conflict(new { mensaje = "[ERROR-CambiarContrasena([FromBody] Usuario usuarioEmailToken,string token)]Email o token no valido" });
+                    return Conflict(new { mensaje = "Email o token no valido" });
                 }
             }
             catch (Exception ex)
             {
-                return Conflict( new { Mensaje = "[ERROR-CambiarContrasena([FromBody] Usuario usuarioEmailToken,string token)]Error al cambiar contraseña"});
+                return Conflict( new { Mensaje = "Error al cambiar contraseña"});
             }
+            
             static string HashPassword(string password, string salt)
             {
                 using (SHA256 sha256 = SHA256.Create())
@@ -105,6 +118,11 @@ namespace API_PF.Controllers
             string token = guid.ToString();
             return token;
         }
+        /// <summary>
+        /// Método para enviar un correo con un token y un mail
+        /// </summary>
+        /// <param name="destinatario"></param>
+        /// <param name="token"></param>
         private void EnviarCorreoRecuperacion(string destinatario, string token)
         {
             try
@@ -141,7 +159,7 @@ namespace API_PF.Controllers
             }
             catch (Exception ex)
             {
-                // Manejar errores relacionados con el envío de correo (puedes registrarlos, lanzar una excepción personalizada, etc.)
+               
                 Console.WriteLine($"Error al enviar el correo: {ex.Message}");
             }
         }
